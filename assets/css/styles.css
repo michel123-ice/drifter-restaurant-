@@ -1,7 +1,7 @@
 /* =========================================================
    Drifters Kitchen Bar — East Wittering
    Palette: sea ink, driftwood sand, brass, chalk
-   Type: Fraunces (display) + Hanken Grotesk (text)
+   Type: Sora (display) + Inter (text)
    ========================================================= */
 
 :root {
@@ -19,8 +19,16 @@
   --wrap: 1240px;
   --gut: clamp(1.15rem, 4.2vw, 3.25rem);
 
-  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --display: "Sora", "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --text: "Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  /* Type scale — display tightens optically as it grows */
+  --track-display: -0.035em;
+  --track-heading: -0.028em;
+  --track-eyebrow: 0.15em;
+  --lh-display: 0.98;
+  --lh-heading: 1.08;
+  --lh-body: 1.65;
 
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --dock-h: 0px;
@@ -39,10 +47,14 @@ body {
   background: var(--sand);
   color: var(--body);
   font-family: var(--text);
-  font-size: clamp(1rem, 0.97rem + 0.16vw, 1.075rem);
-  line-height: 1.62;
+  font-size: clamp(1rem, 0.965rem + 0.15vw, 1.06rem);
+  line-height: var(--lh-body);
   font-weight: 400;
+  letter-spacing: 0.002em;
+  font-optical-sizing: auto;
+  font-feature-settings: "cv05" 1, "cv08" 1;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
@@ -52,11 +64,12 @@ img { height: auto; }
 
 h1, h2, h3 {
   font-family: var(--display);
-  font-weight: 400;
-  letter-spacing: -0.022em;
+  font-weight: 600;
+  letter-spacing: var(--track-heading);
+  line-height: var(--lh-heading);
   margin: 0;
   color: var(--ink);
-  font-variation-settings: "SOFT" 0, "WONK" 0;
+  text-wrap: balance;
 }
 
 p { margin: 0; }
@@ -100,17 +113,19 @@ a { color: inherit; }
 /* --- Shared type --- */
 
 .h2 {
-  font-size: clamp(1.95rem, 1.15rem + 3.1vw, 3.6rem);
-  line-height: 1.04;
-  letter-spacing: -0.032em;
+  font-size: clamp(2rem, 1.18rem + 3.2vw, 3.75rem);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--track-heading);
   max-width: 22ch;
 }
 
 .lead {
   font-family: var(--display);
-  font-size: clamp(1.16rem, 1.03rem + 0.62vw, 1.5rem);
-  line-height: 1.52;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.14rem, 1.02rem + 0.56vw, 1.44rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.014em;
   color: #2C2B26;
   max-width: 40ch;
   text-wrap: pretty;
@@ -130,7 +145,7 @@ a { color: inherit; }
   font-family: var(--text);
   font-size: var(--btn-fs);
   font-weight: 600;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.005em;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 2px;
@@ -244,8 +259,9 @@ a { color: inherit; }
 }
 .brand__name {
   font-family: var(--display);
-  font-size: 1.42rem;
-  letter-spacing: -0.03em;
+  font-size: 1.34rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 .brand__rule {
@@ -256,8 +272,9 @@ a { color: inherit; }
   align-self: center;
 }
 .brand__sub {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: 0.69rem;
+  font-weight: 500;
+  letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   opacity: 0.86;
 }
@@ -351,8 +368,10 @@ body.is-locked { overflow: hidden; }
 .sheet__nav { display: grid; gap: 0.2rem; }
 .sheet__nav a {
   font-family: var(--display);
-  font-size: clamp(1.85rem, 8vw, 2.6rem);
-  line-height: 1.22;
+  font-size: clamp(1.75rem, 7.4vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.03em;
   text-decoration: none;
   color: var(--chalk);
   padding-block: 0.32rem;
@@ -429,8 +448,9 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__place {
-  font-size: 0.76rem;
-  letter-spacing: 0.17em;
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(246, 242, 233, 0.82);
   opacity: 0;
@@ -438,11 +458,11 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__title {
-  font-size: clamp(2.85rem, 1.1rem + 10.4vw, 8.4rem);
-  line-height: 0.92;
-  letter-spacing: -0.045em;
+  font-size: clamp(2.6rem, 1rem + 9.6vw, 7.6rem);
+  line-height: 0.94;
+  letter-spacing: -0.042em;
   color: var(--chalk);
-  font-weight: 300;
+  font-weight: 700;
   display: grid;
   margin-bottom: 0.1rem;
 }
@@ -462,12 +482,14 @@ body.is-locked { overflow: hidden; }
 .hero__line:nth-child(1) > span { animation-delay: 0.15s; }
 .hero__line:nth-child(2) > span { animation-delay: 0.3s; }
 
+/* Second line: lighter weight + wider tracking carries the contrast
+   (Sora has no true italic, so weight does the work instead) */
 .hero__line:nth-child(2) {
-  font-style: italic;
-  font-size: 0.52em;
-  line-height: 1.16;
-  letter-spacing: -0.03em;
-  padding-left: 0.08em;
+  font-style: normal;
+  font-size: 0.5em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  padding-left: 0.06em;
   color: rgba(246, 242, 233, 0.94);
   font-weight: 300;
 }
@@ -481,8 +503,9 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__sub {
-  font-size: clamp(1rem, 0.94rem + 0.4vw, 1.2rem);
-  line-height: 1.55;
+  font-size: clamp(1rem, 0.945rem + 0.36vw, 1.16rem);
+  line-height: 1.6;
+  letter-spacing: 0.002em;
   max-width: 36ch;
   color: rgba(246, 242, 233, 0.9);
   opacity: 0;
@@ -637,13 +660,15 @@ body.is-locked { overflow: hidden; }
 .menu:hover .menu__mark { width: 46px; }
 
 .menu__name {
-  font-size: clamp(1.55rem, 1.3rem + 1vw, 2.05rem);
-  line-height: 1.1;
-  letter-spacing: -0.028em;
+  font-size: clamp(1.45rem, 1.24rem + 0.86vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.026em;
 }
 
 .menu__note {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
+  line-height: 1.6;
   color: #55544B;
   max-width: 32ch;
   text-wrap: pretty;
@@ -764,9 +789,9 @@ body.is-locked { overflow: hidden; }
 
 .find__label {
   font-family: var(--text);
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   color: #6A6859;
   margin-bottom: 0.15rem;
@@ -774,9 +799,10 @@ body.is-locked { overflow: hidden; }
 
 .find__big {
   font-family: var(--display);
-  font-size: clamp(1.16rem, 1.05rem + 0.45vw, 1.4rem);
-  line-height: 1.42;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.1rem, 1.01rem + 0.4vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   font-style: normal;
   color: var(--ink);
   overflow-wrap: anywhere;
@@ -861,15 +887,18 @@ body.is-locked { overflow: hidden; }
 
 .foot__brand {
   font-family: var(--display);
-  font-size: 1.3rem;
+  font-size: 1.22rem;
+  font-weight: 600;
   color: var(--chalk);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 .foot__brand span {
-  font-style: italic;
-  font-size: 0.74em;
-  opacity: 0.7;
-  margin-left: 0.2rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.8em;
+  opacity: 0.72;
+  margin-left: 0.24rem;
+  letter-spacing: -0.01em;
 }
 
 .foot__line { font-size: 0.92rem; }
@@ -979,19 +1008,22 @@ body.is-locked { overflow: hidden; }
 }
 .modal__close:hover { background: rgba(14, 31, 28, 0.06); border-color: rgba(14, 31, 28, 0.3); }
 .modal__kicker {
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
+  font-size: 0.73rem;
+  letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   color: var(--brass-deep);
   font-weight: 600;
   margin-top: 0.4rem;
 }
 .modal__title {
-  font-size: clamp(1.7rem, 1.4rem + 1.4vw, 2.3rem);
-  line-height: 1.08;
+  font-size: clamp(1.62rem, 1.38rem + 1.1vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.028em;
 }
 .modal__copy {
-  font-size: 1rem;
+  font-size: 0.98rem;
+  line-height: 1.62;
   color: #46453E;
   max-width: 40ch;
   margin-bottom: 0.4rem;
