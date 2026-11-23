@@ -8,6 +8,12 @@ freecode reads this file before every change. Add anything it should always reme
 - Credit: photos are free-licensed stock placeholders (Unsplash + Wikimedia Commons) standing in for the venue's own photography.
 - Constraints from the owner: no prices, dish names, reviews, ratings, founding year, awards or opening hours. Booking link and phone number must stay exactly as written. Menu buttons open a dialog saying the menu isn't online yet — wire to PDFs later if supplied.
 
+## GitHub
+- Repo: https://github.com/michel123-ice/Drifters- (public, `main`, owned by the signed-in account `michel123-ice`).
+- Auth is GitHub CLI device flow, stored at `~/.config/gh/hosts.yml`. Binary is at `~/.local/bin/gh` (not on PATH). `gh auth setup-git` is already done; without it pushes fail with "could not read Username".
+- `./sync.sh "message"` commits pending changes, rebase-pulls, then pushes. Run it after edits so the repo tracks the project.
+- No realtime two-way bridge exists: sync happens when this script runs, i.e. while the session is awake.
+
 ## Skills
 - Installed `nextlevelbuilder/ui-ux-pro-max-skill` (commit 281e453) into `.agents/skills/`: ui-ux-pro-max, ui-styling, design, design-system, brand, banner-design, slides. Entry point is `.agents/skills/ui-ux-pro-max/SKILL.md`.
 - Search CLI: `python3 .agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain <ux|style|color|typography|icons|gsap|chart|landing|product>`, `--design-system -p "<Product>" [--format markdown]`, or `--stack <react|nextjs|vue|svelte|astro|shadcn|html-tailwind|flutter|swiftui|...>`. No external deps; run from repo root. Zero hits means retry with broader keywords and say no database match was found.
