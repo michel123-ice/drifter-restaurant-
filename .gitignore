@@ -1,0 +1,16 @@
+# Build output (created by ./build.sh)
+dist/
+
+# Dependencies and caches
+node_modules/
+.cache/
+.DS_Store
+*.log
+
+# Local editor files
+.vscode/
+.idea/
+
+# Installed design skills (managed by the `skills` CLI).
+# skills-lock.json stays tracked so the skill set can be restored.
+.agents/
