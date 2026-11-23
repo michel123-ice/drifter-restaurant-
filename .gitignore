@@ -14,3 +14,7 @@ node_modules/
 # Installed design skills (managed by the `skills` CLI).
 # skills-lock.json stays tracked so the skill set can be restored.
 .agents/
+
+# Workspace files
+.freecode/
+.freecode-source-ready
